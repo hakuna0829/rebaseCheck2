@@ -17,6 +17,11 @@ function respondBase64 (req, res) {
   const phrase = req.url.replace(/^\/b64\//, '')
   res.end(JSON.stringify({ b64: Buffer.from(phrase).toString('base64') }))
 }
+function respondUserAgent (req, res) {
+  const ua = req.headers['user-agent']
+  res.end(JSON.stringify({ ua }))
+}
+
 
 server.listen(PORT)
 console.log(`Server listening on port ${PORT}`)
